@@ -2,14 +2,12 @@ node {
     def mvnHome
     stage('Pull source code') {
        git 'https://github.com/alexwang66/notebook-k8s.git'
-
        mvnHome = tool 'maven'
     }
     dir('notebook-service') {
 
          stage('Code scanning'){
                     sh '''
-
                     '''
                 }
 
@@ -67,9 +65,6 @@ node {
 
                 docker tag art.local:8081/docker-testing-local/notebook-k8s/notebook-service:\$BUILD_NUMBER art.local:8081/docker-release-local/notebook-k8s/notebook-service:\$BUILD_NUMBER
                 docker push art.local:8081/docker-release-local/notebook-k8s/notebook-service:\$BUILD_NUMBER
-
-
-               
             '''
 
             def commandText = "curl  -H \"X-JFrog-Art-Api: AKCp5ekw5hzGB6gTaU6YUWU5TCiEWS1dfNvJLmVQxYrFGqxVDAZ6kWnhy36sxwG3iTqPDfQ7T\" -X PUT \"http://art.local:8082/artifactory/api/storage/docker-release-local/notebook-k8s/notebook-service/${env.BUILD_NUMBER}?properties=Test.UnitTestPassed=true;Test.CodeScanningPassed=true;Test.IntegrationTestPassed=true;Released=true\" ";
