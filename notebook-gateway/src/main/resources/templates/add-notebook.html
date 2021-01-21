@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>Add User</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link crossorigin="anonymous"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          rel="stylesheet">
+    <link crossorigin="anonymous"
+          href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+          rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
+</head>
+<body>
+<div class="container my-5">
+    <h3> Add notebook</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-10">
+                <form action="#" method="post"
+                      th:action="@{/add}" th:object="${notebook}">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label class="col-form-label" for="name">Name</label> <input
+                                class="form-control" id="name" placeholder="Name" th:field="*{name}"
+                                type="text"> <span
+                                class="text-danger" th:errors="*{name}"
+                                th:if="${#fields.hasErrors('name')}"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label class="col-form-label" for="email">Email</label> <input
+                                class="form-control" id="email" placeholder="Email" th:field="*{email}"
+                                type="text"> <span
+                                class="text-danger" th:errors="*{email}"
+                                th:if="${#fields.hasErrors('email')}"></span>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label class="col-form-label" for="phoneNo">Phone No</label> <input
+                                class="form-control" id="phoneNo" placeholder="PhoneNo"
+                                th:field="*{phoneNo}" type="text"> <span
+                                class="text-danger" th:errors="*{phoneNo}"
+                                th:if="${#fields.hasErrors('phoneNo')}"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <input class="btn btn-primary" type="submit" value="Add Note">
+                        </div>
+
+                        <div class="form-group col-md-8"></div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
